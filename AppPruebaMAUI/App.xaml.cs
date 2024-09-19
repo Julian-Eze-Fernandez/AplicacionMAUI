@@ -6,7 +6,8 @@
         {
             InitializeComponent();
 
-            MainPage = new AppShell();
+			Application.Current.UserAppTheme = AppTheme.Light;
+			MainPage = new ContentPageDemo();
         }
     }
 }

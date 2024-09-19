@@ -4,11 +4,12 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:local="clr-namespace:AppPruebaMAUI"
-    Shell.FlyoutBehavior="Disabled"
-    Title="AppPruebaMAUI">
+    Shell.FlyoutBehavior="Disabled">
+
 
     <ShellContent
-        Title="Home"
+        Icon="logo_lucybell.png"
+        Title="Cargar Productos"
         ContentTemplate="{DataTemplate local:MainPage}"
         Route="MainPage" />
 

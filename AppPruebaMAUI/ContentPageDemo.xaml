@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AppPruebaMAUI.ContentPageDemo"
+             Title="LucyBell"
+             BackgroundColor="{StaticResource BackgroundColorPersonalizado}">
+
+    <Grid>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="100" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <Image Grid.Row="0"
+               Source="logo_lucybell.png"
+               Aspect="AspectFit"
+               HorizontalOptions="Center"
+               VerticalOptions="Center" />
+
+        <VerticalStackLayout Grid.Row="1"
+                             Padding="5"
+                             Spacing="10"
+                             VerticalOptions="Start">
+            <Label Text="Cargar Productos"
+                   FontSize="23"
+                   FontFamily="VollkornSC-Regular"
+                   HorizontalOptions="Center"/>
+
+            <BoxView 
+                HeightRequest="3"
+                HorizontalOptions="FillAndExpand"
+                Color="Black" />
+        </VerticalStackLayout>
+
+        <ScrollView Grid.Row="2"
+            VerticalOptions="FillAndExpand">
+            <StackLayout Padding="30"
+                         Spacing="10"
+                         VerticalOptions="StartAndExpand">
+
+                <Entry x:Name="ProductoNombre"
+                       Placeholder="Nombre del producto"
+                       FontSize="16"
+                       BackgroundColor="White"/>
+                <Entry x:Name="ProductoCategoria"
+                       Placeholder="Categoria del producto"
+                       FontSize="16"
+                       BackgroundColor="White"/>
+                <Entry x:Name="ProductoPrecio"
+                       Placeholder="Precio del producto"
+                       Keyboard="Numeric"
+                       FontSize="16"
+                       BackgroundColor="White"/>
+                <Entry x:Name="ProductoCantidad"
+                       Placeholder="Cantidad de productos"
+                       Keyboard="Numeric"
+                       FontSize="16"
+                       BackgroundColor="White"/>
+
+                <Button Text="Seleccionar Imagen"
+                        FontSize="20"
+                        HorizontalOptions="Center"
+                        Clicked="OnSelectImageButtonClicked"/>
+
+                <Image x:Name="ProductImage"
+                       WidthRequest="200"
+                       HeightRequest="200"
+                       Aspect="AspectFill"
+                       HorizontalOptions="Center" 
+                       BackgroundColor="White"/>
+
+                <Button Text="Agregar Producto"
+                        FontSize="24"
+                        HorizontalOptions="Center"
+                        Clicked="OnAddProductButtonClicked" />
+
+                <ListView x:Name="ProductsListView"
+                          HorizontalOptions="FillAndExpand"
+                          HeightRequest="400">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <StackLayout Padding="5" Margin="5" Orientation="Horizontal" HeightRequest="100">
+                                    <Image Source="{Binding ImageFilePath}"
+                                           WidthRequest="60"
+                                           HeightRequest="60"
+                                           Aspect="AspectFill"
+                                           VerticalOptions="Center" />
+
+                                    <StackLayout Padding="10" VerticalOptions="Center">
+                                        <HorizontalStackLayout>
+                                            <Label Text="{Binding Nombre}" FontSize="18" />
+                                            <Label Text=" - " />
+                                            <Label Text="{Binding Categoria}" FontSize="18" />
+                                        </HorizontalStackLayout>
+
+                                        <HorizontalStackLayout>
+                                            <Label Text="{Binding Precio, StringFormat='${0:F2}'}" FontSize="14" />
+                                            <Label Text=" - " />
+                                            <Label Text="{Binding Cantidad}" FontSize="14" />
+                                        </HorizontalStackLayout>
+                                    </StackLayout>
+                                </StackLayout>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </StackLayout>
+        </ScrollView>
+
+    </Grid>
+</ContentPage>
